@@ -45,57 +45,8 @@
 			offset: 70
 		})
 
-        
-        /* ---------------------------------------------- /*
-		 * Skills
-        /* ---------------------------------------------- */    
-        //var color = $('#home').css('backgroundColor');
-
-        $('.skills').waypoint(function(){
-            $('.chart').each(function(){
-            $(this).easyPieChart({
-                    size:140,
-                    animate: 2000,
-                    lineCap:'butt',
-                    scaleColor: false,
-                    barColor: '#FF5252',
-                    trackColor: 'transparent',
-                    lineWidth: 10
-                });
-            });
-        },{offset:'80%'});
-        
-        
-        /* ---------------------------------------------- /*
-		 * Quote Rotator
-		/* ---------------------------------------------- */
-       
-			$( function() {
-				/*
-				- how to call the plugin:
-				$( selector ).cbpQTRotator( [options] );
-				- options:
-				{
-					// default transition speed (ms)
-					speed : 700,
-					// default transition easing
-					easing : 'ease',
-					// rotator interval (ms)
-					interval : 8000
-				}
-				- destroy:
-				$( selector ).cbpQTRotator( 'destroy' );
-				*/
-
-				$( '#cbp-qtrotator' ).cbpQTRotator();
-
-			} );
-		
-        
-		/* ---------------------------------------------- /*
-		 * Home BG
-		/* ---------------------------------------------- */
-
+              
+   
 		$(".screen-height").height($(window).height());
 
 		$(window).resize(function(){
@@ -108,10 +59,6 @@
 			$('#home').parallax('50%', 0.1);
 		}
 
-
-		/* ---------------------------------------------- /*
-		 * WOW Animation When You Scroll
-		/* ---------------------------------------------- */
 
 		wow = new WOW({
 			mobile: false
@@ -128,45 +75,7 @@
 			return pattern.test(emailAddress);
 		};
 
-		/* ---------------------------------------------- /*
-		 * Contact form ajax
-		/* ---------------------------------------------- */
-
-		$('#contact-form').submit(function(e) {
-
-			e.preventDefault();
-
-			var c_name = $('#c_name').val();
-			var c_email = $('#c_email').val();
-			var c_message = $('#c_message ').val();
-			var response = $('#contact-form .ajax-response');
-			
-			var formData = {
-				'name'       : c_name,
-				'email'      : c_email,
-				'message'    : c_message
-			};
-
-			if (( c_name== '' || c_email == '' || c_message == '') || (!isValidEmailAddress(c_email) )) {
-				response.fadeIn(500);
-				response.html('<i class="fa fa-warning"></i> Please fix the errors and try again.');
-			}
-
-			else {
-					 $.ajax({
-							type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-							url         : 'assets/php/contact.php', // the url where we want to POST
-							data        : formData, // our data object
-							dataType    : 'json', // what type of data do we expect back from the server
-							encode      : true,
-							success		: function(res){
-											var ret = $.parseJSON(JSON.stringify(res));
-											response.html(ret.message).fadeIn(500);
-							}
-						});
-				}           
-            	return false;
-			});
+		
 
 	});
 
